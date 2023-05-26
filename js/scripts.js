@@ -1,5 +1,5 @@
 function newItem() {
-  
+
   let li = $('<li></li>');
   let inputValue = $('#input').val();
   li.append(inputValue);
@@ -7,10 +7,9 @@ function newItem() {
   if (inputValue === '') {
     alert("You must write something!");
   } else {
-    let list = $('#list');
-    list.append(li);
+    $('#list').append(li);
   }
- 
+
   li.on("dblclick", function crossOut() {
     li.toggleClass("strike");
   });
@@ -25,5 +24,11 @@ function newItem() {
   }
 
   $('#list').sortable();
+}
+$('#input').keydown(function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    newItem();
+  }
+});
 
-};
